@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch",
+      "Bash(ls *)",
+      "Bash(mkdir *)",
+      "Bash(node *)",
+      "Bash(grep *)",
+      "Bash(cat *)",
+      "Write(/Users/jacob/code/career-ops/reports/*)",
+      "Write(/Users/jacob/code/career-ops/batch/*)",
+      "Write(/Users/jacob/code/career-ops/data/*)",
+      "Read(/Users/jacob/code/career-ops/*)"
+    ]
+  }
+}

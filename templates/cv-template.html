@@ -37,7 +37,7 @@
   body {
     font-family: 'Liberation Sans', 'Helvetica Neue', Arial, 'DejaVu Sans', sans-serif;
     font-size: 11px;
-    line-height: 1.5;
+    line-height: 1.4;
     color: #1a1a2e;
     background: #ffffff;
     padding: 0;
@@ -56,7 +56,7 @@
 
   /* === HEADER === */
   .header {
-    margin-bottom: 20px;
+    margin-bottom: 12px;
   }
 
   .header h1 {
@@ -65,7 +65,7 @@
     font-weight: 700;
     color: #1a1a2e;
     letter-spacing: -0.02em;
-    margin-bottom: 6px;
+    margin-bottom: 5px;
     line-height: 1.1;
   }
 
@@ -73,7 +73,7 @@
     height: 2px;
     background: linear-gradient(to right, hsl(187, 74%, 32%), hsl(270, 70%, 45%));
     border-radius: 1px;
-    margin-bottom: 10px;
+    margin-bottom: 7px;
   }
 
   .contact-row {
@@ -113,7 +113,7 @@
 
   /* === SECTIONS === */
   .section {
-    margin-bottom: 18px;
+    margin-bottom: 9px;
   }
 
   .section-title {
@@ -124,15 +124,15 @@
     letter-spacing: 0.06em;
     color: hsl(187, 74%, 32%);
     border-bottom: 1.5px solid #e2e2e2;
-    padding-bottom: 4px;
-    margin-bottom: 10px;
+    padding-bottom: 3px;
+    margin-bottom: 6px;
     line-height: 1.2;
   }
 
   /* === PROFESSIONAL SUMMARY === */
   .summary-text {
     font-size: 11px;
-    line-height: 1.7;
+    line-height: 1.5;
     color: #2f2f2f;
   }
 
@@ -166,7 +166,7 @@
 
   /* === WORK EXPERIENCE === */
   .job {
-    margin-bottom: 14px;
+    margin-bottom: 7px;
   }
 
   .job-header {
@@ -174,7 +174,7 @@
     justify-content: space-between;
     align-items: baseline;
     gap: 12px;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
   }
 
   .job-company {
@@ -185,16 +185,16 @@
   }
 
   .job-period {
-    font-size: 10.5px;
+    font-size: 10px;
     color: #777;
     white-space: nowrap;
   }
 
   .job-role {
-    font-size: 11px;
+    font-size: 10.5px;
     font-weight: 600;
     color: #333;
-    margin-bottom: 6px;
+    margin-bottom: 4px;
   }
 
   .job-location {
@@ -203,15 +203,15 @@
   }
 
   .job ul {
-    padding-left: 18px;
-    margin-top: 6px;
+    padding-left: 16px;
+    margin-top: 4px;
   }
 
   .job li {
     font-size: 10.5px;
-    line-height: 1.6;
+    line-height: 1.45;
     color: #333;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
 
   .job li strong {
@@ -325,6 +325,27 @@
   }
 
   /* === SKILLS === */
+  .skills-table {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 5px 14px;
+    align-items: baseline;
+  }
+
+  .skill-category {
+    font-weight: 600;
+    color: #333;
+    font-size: 10.5px;
+    white-space: nowrap;
+  }
+
+  .skill-list {
+    font-size: 10.5px;
+    color: #444;
+    line-height: 1.45;
+  }
+
+  /* legacy flat grid — kept for backwards compatibility */
   .skills-grid {
     display: flex;
     flex-wrap: wrap;
@@ -334,12 +355,6 @@
   .skill-item {
     font-size: 10.5px;
     color: #444;
-  }
-
-  .skill-category {
-    font-weight: 600;
-    color: #333;
-    font-size: 10.5px;
   }
 
   /* === PRINT === */

@@ -30,6 +30,16 @@
 19. Execute: `node generate-pdf.mjs output/cv-{candidate}-{company}.html output/cv-{candidate}-{company}-{YYYY-MM-DD}.pdf --format={letter|a4} --report={report number}` — `{report number}` is the NNN from the report filename/link (e.g. `008` for `reports/008-acme-….md`), not the tracker `#` column. Pass it whenever the application has (or will have) a report; it records the PDF↔report linkage in `data/pdf-index.tsv` so the dashboard can open and regenerate the exact PDF. Omit it only for one-off CVs with no tracker entry.
 20. Report: PDF path, number of pages, keyword coverage %, and any skill gaps from Step 4 still unaddressed
 
+## One-page rule (STRICT)
+
+The CV MUST fit on one page. If content overflows, trim in this order:
+1. Drop any role older than 8 years that adds no differentiating signal (internships, unrelated support jobs)
+2. Reduce bullets to 2-3 per role (keep the strongest; prioritise JD-relevant ones)
+3. Trim the Professional Summary to 2-3 lines
+4. Drop the Projects section if still over one page
+
+Never shrink font below 10px. Never set line-height below 1.4.
+
 ## ATS Rules (clean parsing)
 
 - Single-column layout (no sidebars, no parallel columns)
@@ -52,11 +62,11 @@
 
 - **Fonts**: Space Grotesk (headings, 600-700) + DM Sans (body, 400-500)
 - **Fonts self-hosted**: `fonts/`
-- **Header**: name in Space Grotesk 24px bold + gradient line `linear-gradient(to right, hsl(187,74%,32%), hsl(270,70%,45%))` 2px + contact row
-- **Section headers**: Space Grotesk 13px, uppercase, letter-spacing 0.05em, color cyan primary
-- **Body**: DM Sans 11px, line-height 1.5
+- **Header**: name in Space Grotesk 26px bold + gradient line `linear-gradient(to right, hsl(187,74%,32%), hsl(270,70%,45%))` 2px + contact row
+- **Section headers**: Space Grotesk 11px, uppercase, letter-spacing 0.06em, color cyan primary
+- **Body**: DM Sans 11px, line-height 1.4
 - **Company names**: accent purple color `hsl(270,70%,45%)`
-- **Margins**: 0.6in
+- **Margins**: 0.5in
 - **Background**: pure white
 
 ## Section order (optimized "6-second recruiter scan")
@@ -82,6 +92,7 @@ Examples of legitimate reformulation:
 
 **Before generating: read `modes/_custom.md` (if it exists) and apply its formatting/content house rules to every CV in this session — including every item of a batch.** Rules recorded there (date formats, section-order preferences, content to always/never include) are persistent user instructions, not suggestions; if the user corrects the same thing twice in conversation, write it into `modes/_custom.md` so it stops drifting.
 
+<<<<<<< HEAD
 ### Selecting the template
 
 Resolve which template to fill with the shared resolver (do not hardcode `cv-template.html`):
@@ -182,6 +193,53 @@ The `{{PHOTO}}` slot is **off by default** and intentionally market-specific:
 - **US / UK / Canada / Australia and many ATS-first markets**: photos are discouraged and can trip bias-avoidance filters. Leave `candidate.photo` empty — the `{{PHOTO}}` line is dropped entirely, no `<img>` is emitted, and the CV renders **pixel-for-pixel identical** to today's photoless layout.
 
 When set, the photo floats into the top corner (mirrored for RTL/Arabic) and the header/summary text wraps beside it; `.cv-photo` in `cv-template.html` controls its size and framing.
+=======
+| Placeholder | Content |
+|-------------|-----------|
+| `{{LANG}}` | `en` or `es` |
+| `{{PAGE_WIDTH}}` | `8.5in` (letter) or `210mm` (A4) |
+| `{{NAME}}` | (from profile.yml) |
+| `{{PHONE}}` | (from profile.yml — include with its separator only when `profile.yml` has a non-empty `phone` value; omit both `<span>` and `<span class="separator">` otherwise) |
+| `{{EMAIL}}` | (from profile.yml) |
+| `{{LINKEDIN_URL}}` | [from profile.yml] |
+| `{{LINKEDIN_DISPLAY}}` | [from profile.yml] |
+| `{{PORTFOLIO_URL}}` | [from profile.yml] (or /es depending on language) |
+| `{{PORTFOLIO_DISPLAY}}` | [from profile.yml] (or /es depending on language) |
+| `{{LOCATION}}` | [from profile.yml] |
+| `{{SECTION_SUMMARY}}` | Professional Summary |
+| `{{SUMMARY_TEXT}}` | Personalized summary with keywords |
+| `{{SECTION_COMPETENCIES}}` | Core Competencies |
+| `{{COMPETENCIES}}` | `<span class="competency-tag">keyword</span>` × 6-8 |
+| `{{SECTION_EXPERIENCE}}` | Work Experience |
+| `{{EXPERIENCE}}` | HTML for each job with reordered bullets |
+| `{{SECTION_PROJECTS}}` | Projects |
+| `{{PROJECTS}}` | HTML for top 3-4 projects |
+| `{{SECTION_EDUCATION}}` | Education |
+| `{{EDUCATION}}` | Education HTML |
+| `{{SECTION_CERTIFICATIONS}}` | Certifications |
+| `{{CERTIFICATIONS}}` | Certifications HTML |
+| `{{SECTION_SKILLS}}` | Skills |
+| `{{SKILLS}}` | Skills HTML — use two-column `.skills-table` (see below) |
+
+### Skills HTML format
+
+Render skills as a two-column grid: category label on the left, comma-separated values on the right.
+
+```html
+<div class="skills-table">
+  <span class="skill-category">Languages</span>
+  <span class="skill-list">JavaScript, TypeScript, Go, Python, Bash</span>
+  <span class="skill-category">Frontend</span>
+  <span class="skill-list">React, TypeScript, Patternfly, Jest, Playwright</span>
+  <span class="skill-category">Backend</span>
+  <span class="skill-list">Go, Node.js, REST APIs</span>
+  <span class="skill-category">Infrastructure</span>
+  <span class="skill-list">Docker, RPM packaging, CI/CD, GitHub Actions</span>
+  <span class="skill-category">Cloud</span>
+  <span class="skill-list">AWS, Azure, GCP</span>
+</div>
+```
+>>>>>>> 01136bf (claude: setup permessions and basic pdf resume)
 
 ## Canva CV Generation (optional)
 
